@@ -1,0 +1,18 @@
+aid: granular
+url: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/apis.yml
+apis:
+- aid: granular:granular-api
+  name: Granular (AgriForce) Farm Management API
+  tags:
+  - Agriculture
+  - Farm Management
+  - Financial
+  - Crop Planning
+  image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
+  humanURL: https://granular.ag/
+  baseURL: https://api.granular.ag
+  properties:
+  - url: https://granular.ag/
+    type: Documentation
+  description: >-
+    Granular (now part of AgriForce / Corteva) provides farm management software APIs for crop planning, field records, financial analysis, and operational tracking. APIs enable access to field-level production data, input cost tracking, and agronomic decision support.
