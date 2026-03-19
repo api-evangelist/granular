@@ -1,0 +1,89 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "agro": "http://agroportal.lirmm.fr/ontologies/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dct": "http://purl.org/dc/terms/",
+    "geosparql": "http://www.opengis.net/ont/geosparql#",
+
+    "Farm": {
+      "@id": "schema:LocalBusiness",
+      "@type": "@id"
+    },
+    "Field": {
+      "@id": "schema:Place",
+      "@type": "@id"
+    },
+    "CropPlan": {
+      "@id": "schema:PlanAction",
+      "@type": "@id"
+    },
+    "Activity": {
+      "@id": "schema:Action",
+      "@type": "@id"
+    },
+
+    "id": "schema:identifier",
+    "name": "schema:name",
+    "farmId": {
+      "@id": "schema:containedInPlace",
+      "@type": "@id"
+    },
+    "acres": {
+      "@id": "schema:floorSize",
+      "@type": "xsd:decimal"
+    },
+    "boundary": {
+      "@id": "geosparql:hasGeometry",
+      "@type": "@id"
+    },
+    "irrigated": "schema:amenityFeature",
+    "county": "schema:addressRegion",
+    "state": "schema:addressRegion",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "crop": "schema:name",
+    "variety": "schema:additionalType",
+    "season": {
+      "@id": "schema:temporalCoverage",
+      "@type": "xsd:integer"
+    },
+    "plannedAcres": {
+      "@id": "schema:floorSize",
+      "@type": "xsd:decimal"
+    },
+    "targetYield": {
+      "@id": "schema:expectedArrivalFrom",
+      "@type": "xsd:decimal"
+    },
+
+    "activityType": "schema:actionStatus",
+    "date": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "notes": "schema:description",
+
+    "totalRevenue": {
+      "@id": "schema:revenue",
+      "@type": "xsd:decimal"
+    },
+    "totalExpenses": {
+      "@id": "schema:cost",
+      "@type": "xsd:decimal"
+    },
+    "netIncome": {
+      "@id": "schema:profitMargin",
+      "@type": "xsd:decimal"
+    }
+  }
+}

@@ -1,0 +1,438 @@
+openapi: 3.1.0
+info:
+  title: Granular Farm Management API
+  description: >-
+    Granular (Corteva Agriscience) Farm Management API provides access to farm
+    operational data including fields, crops, planting records, harvest data,
+    input applications, and financial analytics. The API enables integration with
+    precision agriculture systems, input suppliers, and agricultural analytics
+    platforms.
+  version: 1.0.0
+  contact:
+    name: Granular Support
+    url: https://granular.ag/
+  license:
+    name: Corteva Terms of Service
+    url: https://www.corteva.com/
+externalDocs:
+  description: Granular Documentation
+  url: https://granular.ag/
+
+servers:
+  - url: https://api.granular.ag/v1
+    description: Granular Production API
+
+security:
+  - OAuth2: [read, write]
+
+tags:
+  - name: Farms
+    description: Farm entity management
+  - name: Fields
+    description: Field boundary and attribute management
+  - name: Crops
+    description: Crop plans and variety information
+  - name: Activities
+    description: Field activities — planting, application, harvest
+  - name: Financials
+    description: Farm financial records and cost tracking
+
+paths:
+  /farms:
+    get:
+      operationId: listFarms
+      summary: List farms
+      description: Returns all farms accessible to the authenticated user or organization.
+      tags: [Farms]
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+      responses:
+        '200':
+          description: Farm list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FarmList'
+
+  /farms/{farmId}:
+    get:
+      operationId: getFarm
+      summary: Get farm details
+      description: Returns detailed information for a specific farm including contact information, location, and associated fields.
+      tags: [Farms]
+      parameters:
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Farm details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '404':
+          description: Farm not found
+
+  /farms/{farmId}/fields:
+    get:
+      operationId: listFields
+      summary: List fields for a farm
+      description: Returns all fields associated with a farm including GeoJSON boundaries, soil data, and acreage.
+      tags: [Fields]
+      parameters:
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: season
+          in: query
+          schema:
+            type: integer
+          description: Crop year/season to filter fields (e.g., 2024)
+      responses:
+        '200':
+          description: Field list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldList'
+
+  /fields/{fieldId}:
+    get:
+      operationId: getField
+      summary: Get field details
+      description: Returns detailed information for a specific field including boundary geometry, soil type, FSA farm/tract/field numbers, and historical yield data.
+      tags: [Fields]
+      parameters:
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Field details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+        '404':
+          description: Field not found
+
+  /fields/{fieldId}/activities:
+    get:
+      operationId: listFieldActivities
+      summary: List field activities
+      description: Returns all activities logged for a field including planting, fertilizer application, pesticide application, irrigation, and harvest events.
+      tags: [Activities]
+      parameters:
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: season
+          in: query
+          schema:
+            type: integer
+          description: Crop year to filter activities
+        - name: activityType
+          in: query
+          schema:
+            type: string
+            enum: [PLANTING, APPLICATION, HARVEST, TILLAGE, IRRIGATION, SCOUTING]
+      responses:
+        '200':
+          description: Activities returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityList'
+
+  /crop-plans:
+    get:
+      operationId: listCropPlans
+      summary: List crop plans
+      description: Returns crop plans for the organization including planned varieties, target yields, and input budgets.
+      tags: [Crops]
+      parameters:
+        - name: season
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Crop year
+        - name: farmId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Crop plans returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CropPlanList'
+
+  /financials/summary:
+    get:
+      operationId: getFinancialSummary
+      summary: Get farm financial summary
+      description: Returns aggregated financial data including revenue, expenses, and profitability by farm, field, or crop for a specified season.
+      tags: [Financials]
+      parameters:
+        - name: season
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: farmId
+          in: query
+          schema:
+            type: string
+        - name: groupBy
+          in: query
+          schema:
+            type: string
+            enum: [FARM, FIELD, CROP]
+            default: FARM
+      responses:
+        '200':
+          description: Financial summary returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialSummary'
+
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.granular.ag/oauth/authorize
+          tokenUrl: https://auth.granular.ag/oauth/token
+          scopes:
+            read: Read farm data
+            write: Write farm data
+
+  schemas:
+    Farm:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        operatorName:
+          type: string
+        address:
+          type: object
+          properties:
+            street:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zipCode:
+              type: string
+            county:
+              type: string
+        totalAcres:
+          type: number
+          description: Total farm acreage
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    FarmList:
+      type: object
+      properties:
+        farms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Farm'
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+
+    Field:
+      type: object
+      properties:
+        id:
+          type: string
+        farmId:
+          type: string
+        name:
+          type: string
+        acres:
+          type: number
+          description: Field acreage
+        boundary:
+          type: object
+          description: GeoJSON polygon representing field boundary
+          properties:
+            type:
+              type: string
+              enum: [Feature]
+            geometry:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [Polygon, MultiPolygon]
+                coordinates:
+                  type: array
+        fsaFarmNumber:
+          type: string
+          description: USDA FSA farm number
+        fsaTractNumber:
+          type: string
+        fsaFieldNumber:
+          type: string
+        soilType:
+          type: string
+        predominantSoil:
+          type: string
+        irrigated:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+
+    FieldList:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        total:
+          type: integer
+
+    Activity:
+      type: object
+      properties:
+        id:
+          type: string
+        fieldId:
+          type: string
+        activityType:
+          type: string
+          enum: [PLANTING, APPLICATION, HARVEST, TILLAGE, IRRIGATION, SCOUTING]
+        date:
+          type: string
+          format: date
+        season:
+          type: integer
+        crop:
+          type: string
+          description: Crop code (e.g., "CORN", "SOYBEANS")
+        notes:
+          type: string
+        details:
+          type: object
+          description: Activity-specific details (varies by activityType)
+          additionalProperties: true
+
+    ActivityList:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'
+        total:
+          type: integer
+
+    CropPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        farmId:
+          type: string
+        season:
+          type: integer
+        crop:
+          type: string
+        variety:
+          type: string
+        plannedAcres:
+          type: number
+        targetYield:
+          type: number
+        targetYieldUnit:
+          type: string
+          enum: [BU_AC, MT_HA, TON_AC]
+        seedingRate:
+          type: number
+        inputBudget:
+          type: number
+          description: Planned input cost per acre (USD)
+
+    CropPlanList:
+      type: object
+      properties:
+        cropPlans:
+          type: array
+          items:
+            $ref: '#/components/schemas/CropPlan'
+
+    FinancialSummary:
+      type: object
+      properties:
+        season:
+          type: integer
+        groupBy:
+          type: string
+        totalRevenue:
+          type: number
+          description: Total revenue in USD
+        totalExpenses:
+          type: number
+          description: Total expenses in USD
+        netIncome:
+          type: number
+        revenuePerAcre:
+          type: number
+        expensePerAcre:
+          type: number
+        breakdown:
+          type: array
+          items:
+            type: object
+            properties:
+              entityId:
+                type: string
+              entityName:
+                type: string
+              revenue:
+                type: number
+              expenses:
+                type: number
+              netIncome:
+                type: number
+              acres:
+                type: number

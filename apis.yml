@@ -16,6 +16,8 @@ apis:
   properties:
   - url: https://granular.ag/
     type: Documentation
+  - url: openapi/granular-farm-management-openapi.yml
+    type: OpenAPI
   description: >-
     Granular (now part of Corteva Agriscience) provides farm management software APIs for crop planning, field records, financial analysis, and operational tracking. APIs enable access to field-level production data, input cost tracking, and agronomic decision support for agriculture enterprises.
 
@@ -57,6 +59,12 @@ common:
     type: Website
   - url: https://www.corteva.com/
     type: Website
+  - url: openapi/granular-farm-management-openapi.yml
+    type: OpenAPI
+  - url: json-schema/granular-field-schema.json
+    type: JSONSchema
+  - url: json-ld/granular-context.jsonld
+    type: JSONLDContext
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
