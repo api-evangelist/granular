@@ -26,14 +26,14 @@ security:
   - OAuth2: [read, write]
 
 tags:
+  - name: Activities
+    description: Field activities — planting, application, harvest
+  - name: Crops
+    description: Crop plans and variety information
   - name: Farms
     description: Farm entity management
   - name: Fields
     description: Field boundary and attribute management
-  - name: Crops
-    description: Crop plans and variety information
-  - name: Activities
-    description: Field activities — planting, application, harvest
   - name: Financials
     description: Farm financial records and cost tracking
 

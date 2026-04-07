@@ -1,18 +1,16 @@
 aid: granular
-url: 
-  https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/apis.yml
 apis:
   - aid: granular:granular-farm-management-api
     name: Granular Farm Management API
     tags:
       - Agriculture
-      - Farm Management
-      - Financial
-      - Crop Planning
       - AgriForce
       - Corteva
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
+      - Crop Planning
+      - Farm Management
+      - Financial
+    image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
     humanURL: https://granular.ag/
     baseURL: https://api.granular.ag
     properties:
@@ -30,12 +28,11 @@ apis:
     name: Granular Insights API
     tags:
       - Agriculture
-      - Farm Management
-      - Analytics
       - Agronomy
+      - Analytics
       - Corteva
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
+      - Farm Management
+    image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
     humanURL: https://us.app.granular.ag/
     baseURL: https://api.granular.ag
     properties:
@@ -54,8 +51,7 @@ common:
     APIs for crop planning, field records management, financial analysis, and farm
     operational tracking. The platform serves commercial agriculture operations with
     data-driven decision support tools.
-  image: 
-    https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
+  image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
   tags:
     - Agriculture
     - Farm Management
