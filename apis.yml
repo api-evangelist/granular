@@ -73,9 +73,9 @@ common:
       type: JSONSchema
     - url: json-ld/granular-context.jsonld
       type: JSONLDContext
+    - url: granular-rules.yml
+      type: Rules
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
-modified: '2026-03-18'
-description: >-
-  We’re sorry, but you will need JavaScript enabled to use this site.
+modified: '2026-04-28'

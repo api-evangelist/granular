@@ -1,0 +1,39 @@
+aid: granular
+name: Granular (Corteva Agriscience) Rules
+description: >-
+  Operational rules and conventions governing the Granular farm management APIs,
+  including data ownership, authentication, rate limiting, and integration
+  requirements for agricultural data exchange.
+rules:
+  - id: data-ownership
+    name: Grower Data Ownership
+    description: >-
+      Field-level production data, planting records, and financial information
+      are owned by the grower. API consumers must obtain explicit grower consent
+      before accessing or transmitting farm operational data.
+  - id: authentication
+    name: OAuth2 Authentication Required
+    description: >-
+      All API requests require OAuth2 access tokens. Tokens are scoped to a
+      specific grower account and a defined set of permissions (read, write).
+  - id: rate-limiting
+    name: Standard Rate Limits
+    description: >-
+      API consumers should implement exponential backoff and respect documented
+      rate limits to avoid throttling during bulk data synchronization.
+  - id: data-precision
+    name: Geospatial Precision
+    description: >-
+      Field boundaries and operational geometries should be submitted in
+      WGS84 (EPSG:4326) using GeoJSON. Numeric measurements should preserve
+      original precision from precision agriculture equipment.
+  - id: pii-protection
+    name: PII and Operator Information
+    description: >-
+      Operator names, contact information, and equipment identifiers may
+      constitute PII or business-sensitive data. API integrations must comply
+      with Corteva data handling policies.
+maintainer:
+  name: Kin Lane
+  email: kin@apievangelist.com
+modified: '2026-04-28'
