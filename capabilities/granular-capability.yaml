@@ -1,0 +1,396 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Granular Farm Management API
+  description: Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields,
+    crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision
+    agriculture systems, input suppliers, and agricultural analytics platforms.
+  tags:
+  - Granular
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: granular
+    baseUri: https://api.granular.ag/v1
+    description: Granular Farm Management API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{GRANULAR_TOKEN}}'
+    resources:
+    - name: farms
+      path: /farms
+      operations:
+      - name: listfarms
+        method: GET
+        description: List farms
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+        - name: pageSize
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: farms-farmid
+      path: /farms/{farmId}
+      operations:
+      - name: getfarm
+        method: GET
+        description: Get farm details
+        inputParameters:
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: farms-farmid-fields
+      path: /farms/{farmId}/fields
+      operations:
+      - name: listfields
+        method: GET
+        description: List fields for a farm
+        inputParameters:
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        - name: season
+          in: query
+          type: integer
+          description: Crop year/season to filter fields (e.g., 2024)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: fields-fieldid
+      path: /fields/{fieldId}
+      operations:
+      - name: getfield
+        method: GET
+        description: Get field details
+        inputParameters:
+        - name: fieldId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: fields-fieldid-activities
+      path: /fields/{fieldId}/activities
+      operations:
+      - name: listfieldactivities
+        method: GET
+        description: List field activities
+        inputParameters:
+        - name: fieldId
+          in: path
+          type: string
+          required: true
+        - name: season
+          in: query
+          type: integer
+          description: Crop year to filter activities
+        - name: activityType
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: crop-plans
+      path: /crop-plans
+      operations:
+      - name: listcropplans
+        method: GET
+        description: List crop plans
+        inputParameters:
+        - name: season
+          in: query
+          type: integer
+          required: true
+          description: Crop year
+        - name: farmId
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: financials-summary
+      path: /financials/summary
+      operations:
+      - name: getfinancialsummary
+        method: GET
+        description: Get farm financial summary
+        inputParameters:
+        - name: season
+          in: query
+          type: integer
+          required: true
+        - name: farmId
+          in: query
+          type: string
+        - name: groupBy
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: granular-rest
+    description: REST adapter for Granular Farm Management API.
+    resources:
+    - path: /farms
+      name: listfarms
+      operations:
+      - method: GET
+        name: listfarms
+        description: List farms
+        call: granular.listfarms
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /farms/{farmId}
+      name: getfarm
+      operations:
+      - method: GET
+        name: getfarm
+        description: Get farm details
+        call: granular.getfarm
+        with:
+          farmId: rest.farmId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /farms/{farmId}/fields
+      name: listfields
+      operations:
+      - method: GET
+        name: listfields
+        description: List fields for a farm
+        call: granular.listfields
+        with:
+          farmId: rest.farmId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /fields/{fieldId}
+      name: getfield
+      operations:
+      - method: GET
+        name: getfield
+        description: Get field details
+        call: granular.getfield
+        with:
+          fieldId: rest.fieldId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /fields/{fieldId}/activities
+      name: listfieldactivities
+      operations:
+      - method: GET
+        name: listfieldactivities
+        description: List field activities
+        call: granular.listfieldactivities
+        with:
+          fieldId: rest.fieldId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /crop-plans
+      name: listcropplans
+      operations:
+      - method: GET
+        name: listcropplans
+        description: List crop plans
+        call: granular.listcropplans
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /financials/summary
+      name: getfinancialsummary
+      operations:
+      - method: GET
+        name: getfinancialsummary
+        description: Get farm financial summary
+        call: granular.getfinancialsummary
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: granular-mcp
+    transport: http
+    description: MCP adapter for Granular Farm Management API for AI agent use.
+    tools:
+    - name: listfarms
+      description: List farms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: granular.listfarms
+      with:
+        page: tools.page
+        pageSize: tools.pageSize
+      inputParameters:
+      - name: page
+        type: integer
+        description: page
+      - name: pageSize
+        type: integer
+        description: pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getfarm
+      description: Get farm details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: granular.getfarm
+      with:
+        farmId: tools.farmId
+      inputParameters:
+      - name: farmId
+        type: string
+        description: farmId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfields
+      description: List fields for a farm
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: granular.listfields
+      with:
+        farmId: tools.farmId
+        season: tools.season
+      inputParameters:
+      - name: farmId
+        type: string
+        description: farmId
+        required: true
+      - name: season
+        type: integer
+        description: Crop year/season to filter fields (e.g., 2024)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getfield
+      description: Get field details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: granular.getfield
+      with:
+        fieldId: tools.fieldId
+      inputParameters:
+      - name: fieldId
+        type: string
+        description: fieldId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfieldactivities
+      description: List field activities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: granular.listfieldactivities
+      with:
+        fieldId: tools.fieldId
+        season: tools.season
+        activityType: tools.activityType
+      inputParameters:
+      - name: fieldId
+        type: string
+        description: fieldId
+        required: true
+      - name: season
+        type: integer
+        description: Crop year to filter activities
+      - name: activityType
+        type: string
+        description: activityType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcropplans
+      description: List crop plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: granular.listcropplans
+      with:
+        season: tools.season
+        farmId: tools.farmId
+      inputParameters:
+      - name: season
+        type: integer
+        description: Crop year
+        required: true
+      - name: farmId
+        type: string
+        description: farmId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getfinancialsummary
+      description: Get farm financial summary
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: granular.getfinancialsummary
+      with:
+        season: tools.season
+        farmId: tools.farmId
+        groupBy: tools.groupBy
+      inputParameters:
+      - name: season
+        type: integer
+        description: season
+        required: true
+      - name: farmId
+        type: string
+        description: farmId
+      - name: groupBy
+        type: string
+        description: groupBy
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GRANULAR_TOKEN: GRANULAR_TOKEN
