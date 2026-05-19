@@ -44,6 +44,8 @@ apis:
       for precision agriculture workflows.
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/granular
   aid: granular
   name: Granular (Corteva Agriscience)
   description: >-
