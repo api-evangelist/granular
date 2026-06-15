@@ -1,0 +1,921 @@
+{
+  "item": [
+    {
+      "id": "9c710a84-2555-4440-a7fb-958812330a20",
+      "name": "Activities",
+      "description": {
+        "content": "Field activities — planting, application, harvest",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "03a3416c-d35f-4b3e-aa11-5c7fba8ccb62",
+          "name": "List field activities",
+          "request": {
+            "name": "List field activities",
+            "description": {
+              "content": "Returns all activities logged for a field including planting, fertilizer application, pesticide application, irrigation, and harvest events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fields",
+                ":fieldId",
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "Crop year to filter activities"
+                },
+                {
+                  "disabled": false,
+                  "key": "activityType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fieldId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c52c020-d8d0-4823-94bf-d92305b9ac61",
+              "name": "Activities returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":fieldId",
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activities\": [\n    {\n      \"id\": \"string\",\n      \"fieldId\": \"string\",\n      \"activityType\": \"APPLICATION\",\n      \"date\": \"1978-04-06\",\n      \"season\": 664,\n      \"crop\": \"string\",\n      \"notes\": \"string\",\n      \"details\": {\n        \"key_0\": 7474.734278128305,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"fieldId\": \"string\",\n      \"activityType\": \"SCOUTING\",\n      \"date\": \"1992-03-18\",\n      \"season\": 6926,\n      \"crop\": \"string\",\n      \"notes\": \"string\",\n      \"details\": {\n        \"key_0\": \"string\",\n        \"key_1\": 1614,\n        \"key_2\": false\n      }\n    }\n  ],\n  \"total\": 3903\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a7333511-61f9-4d82-a191-b7bc08456568",
+      "name": "Crops",
+      "description": {
+        "content": "Crop plans and variety information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8277d404-c9c9-4c86-85a9-77404c95554c",
+          "name": "List crop plans",
+          "request": {
+            "name": "List crop plans",
+            "description": {
+              "content": "Returns crop plans for the organization including planned varieties, target yields, and input budgets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "crop-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "(Required) Crop year"
+                },
+                {
+                  "disabled": false,
+                  "key": "farmId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "616f5128-8a8c-4528-9b47-4f01a23b3547",
+              "name": "Crop plans returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crop-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "farmId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cropPlans\": [\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"season\": 5434,\n      \"crop\": \"string\",\n      \"variety\": \"string\",\n      \"plannedAcres\": 7597.359466103152,\n      \"targetYield\": 869.6907883553951,\n      \"targetYieldUnit\": \"MT_HA\",\n      \"seedingRate\": 5151.238216103437,\n      \"inputBudget\": 6151.91551460945\n    },\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"season\": 875,\n      \"crop\": \"string\",\n      \"variety\": \"string\",\n      \"plannedAcres\": 9599.557526146265,\n      \"targetYield\": 8104.442441448856,\n      \"targetYieldUnit\": \"BU_AC\",\n      \"seedingRate\": 1024.2093848212353,\n      \"inputBudget\": 9798.89924793525\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "93d3f754-fa0b-44ad-96b6-8058381817de",
+      "name": "Farms",
+      "description": {
+        "content": "Farm entity management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2bd01dac-8b8c-4160-b1af-b65963b40906",
+          "name": "List farms",
+          "request": {
+            "name": "List farms",
+            "description": {
+              "content": "Returns all farms accessible to the authenticated user or organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "farms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d7ff361-94b9-496f-8364-77aa0662afe5",
+              "name": "Farm list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"farms\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"operatorName\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\",\n        \"county\": \"string\"\n      },\n      \"totalAcres\": 1630.7887243847363,\n      \"createdAt\": \"2014-08-14T11:34:57.758Z\",\n      \"updatedAt\": \"2002-09-23T05:15:47.477Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"operatorName\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\",\n        \"county\": \"string\"\n      },\n      \"totalAcres\": 6415.957380647138,\n      \"createdAt\": \"2015-03-15T15:07:55.057Z\",\n      \"updatedAt\": \"1980-05-02T09:58:04.305Z\"\n    }\n  ],\n  \"total\": 7756,\n  \"page\": 8792,\n  \"pageSize\": 5370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2387c4ca-5bab-4f5b-970e-fe8df3745790",
+          "name": "Get farm details",
+          "request": {
+            "name": "Get farm details",
+            "description": {
+              "content": "Returns detailed information for a specific farm including contact information, location, and associated fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "farms",
+                ":farmId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3454450-5acb-4766-b511-60718a591db9",
+              "name": "Farm details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms",
+                    ":farmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"operatorName\": \"string\",\n  \"address\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"county\": \"string\"\n  },\n  \"totalAcres\": 9272.173309880234,\n  \"createdAt\": \"1954-12-03T04:29:26.131Z\",\n  \"updatedAt\": \"1959-07-06T15:20:07.780Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72acb3a2-9a8d-429f-9b0c-0193366e195f",
+              "name": "Farm not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms",
+                    ":farmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "18513ecc-c9f4-4677-b2d2-8423c18d61d2",
+      "name": "Fields",
+      "description": {
+        "content": "Field boundary and attribute management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "299428ef-964b-490a-9246-74786595fe6d",
+          "name": "List fields for a farm",
+          "request": {
+            "name": "List fields for a farm",
+            "description": {
+              "content": "Returns all fields associated with a farm including GeoJSON boundaries, soil data, and acreage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "farms",
+                ":farmId",
+                "fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "Crop year/season to filter fields (e.g., 2024)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95277fcc-7b3f-4144-b52b-db4584bbaffe",
+              "name": "Field list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms",
+                    ":farmId",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fields\": [\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"name\": \"string\",\n      \"acres\": 3826.4937147784826,\n      \"boundary\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"type\": \"MultiPolygon\"\n        }\n      },\n      \"fsaFarmNumber\": \"string\",\n      \"fsaTractNumber\": \"string\",\n      \"fsaFieldNumber\": \"string\",\n      \"soilType\": \"string\",\n      \"predominantSoil\": \"string\",\n      \"irrigated\": true,\n      \"createdAt\": \"1996-03-11T16:22:06.058Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"name\": \"string\",\n      \"acres\": 9909.647627240944,\n      \"boundary\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"type\": \"Polygon\"\n        }\n      },\n      \"fsaFarmNumber\": \"string\",\n      \"fsaTractNumber\": \"string\",\n      \"fsaFieldNumber\": \"string\",\n      \"soilType\": \"string\",\n      \"predominantSoil\": \"string\",\n      \"irrigated\": false,\n      \"createdAt\": \"1974-10-09T05:54:23.650Z\"\n    }\n  ],\n  \"total\": 2002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf7af6b9-64ba-4bc8-b5df-9faab81651e6",
+          "name": "Get field details",
+          "request": {
+            "name": "Get field details",
+            "description": {
+              "content": "Returns detailed information for a specific field including boundary geometry, soil type, FSA farm/tract/field numbers, and historical yield data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fields",
+                ":fieldId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fieldId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8512cc7b-e7d7-48d7-b6fa-8ad53a7c7652",
+              "name": "Field details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":fieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"farmId\": \"string\",\n  \"name\": \"string\",\n  \"acres\": 915.0587740747196,\n  \"boundary\": {\n    \"type\": \"Feature\",\n    \"geometry\": {\n      \"type\": \"MultiPolygon\"\n    }\n  },\n  \"fsaFarmNumber\": \"string\",\n  \"fsaTractNumber\": \"string\",\n  \"fsaFieldNumber\": \"string\",\n  \"soilType\": \"string\",\n  \"predominantSoil\": \"string\",\n  \"irrigated\": false,\n  \"createdAt\": \"1960-12-30T02:19:20.250Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c98e63bc-7062-424a-935d-415dcc80d831",
+              "name": "Field not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":fieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "56a767cc-ad50-4279-9e43-b6415c39f2ef",
+      "name": "Financials",
+      "description": {
+        "content": "Farm financial records and cost tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d0c12c3-c518-4699-891c-2ff2fc71a131",
+          "name": "Get farm financial summary",
+          "request": {
+            "name": "Get farm financial summary",
+            "description": {
+              "content": "Returns aggregated financial data including revenue, expenses, and profitability by farm, field, or crop for a specified season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "financials",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "farmId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupBy",
+                  "value": "FARM"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dcd7b440-3ebc-4981-9d3b-f18308e2f5c7",
+              "name": "Financial summary returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "financials",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "farmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "FARM"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"season\": 5562,\n  \"groupBy\": \"string\",\n  \"totalRevenue\": 4295.117186124357,\n  \"totalExpenses\": 967.4205122593804,\n  \"netIncome\": 1121.2275838430496,\n  \"revenuePerAcre\": 2124.8396593697994,\n  \"expensePerAcre\": 8548.340665057114,\n  \"breakdown\": [\n    {\n      \"entityId\": \"string\",\n      \"entityName\": \"string\",\n      \"revenue\": 8634.88116184413,\n      \"expenses\": 1180.1493083081073,\n      \"netIncome\": 2672.209711203086,\n      \"acres\": 1356.808722808781\n    },\n    {\n      \"entityId\": \"string\",\n      \"entityName\": \"string\",\n      \"revenue\": 9452.735185951553,\n      \"expenses\": 5009.572115219624,\n      \"netIncome\": 5590.195104321409,\n      \"acres\": 8178.00185832242\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.granular.ag/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.granular.ag/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.granular.ag/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c633351d-fa7b-4c80-8271-8e7adc8d1bc8",
+    "name": "Granular Farm Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.\n\nContact Support:\n Name: Granular Support",
+      "type": "text/plain"
+    }
+  }
+}

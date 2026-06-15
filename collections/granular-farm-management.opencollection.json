@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Granular Farm Management API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.granular.ag/oauth/authorize",
+      "accessTokenUrl": "https://auth.granular.ag/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Farms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List farms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/farms",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all farms accessible to the authenticated user or organization."
+        },
+        {
+          "info": {
+            "name": "Get farm details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/farms/:farmId",
+            "params": [
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific farm including contact information, location, and associated fields."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fields for a farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/farms/:farmId/fields",
+            "params": [
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Crop year/season to filter fields (e.g., 2024)"
+              }
+            ]
+          },
+          "docs": "Returns all fields associated with a farm including GeoJSON boundaries, soil data, and acreage."
+        },
+        {
+          "info": {
+            "name": "Get field details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/fields/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific field including boundary geometry, soil type, FSA farm/tract/field numbers, and historical yield data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List field activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/fields/:fieldId/activities",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Crop year to filter activities"
+              },
+              {
+                "name": "activityType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all activities logged for a field including planting, fertilizer application, pesticide application, irrigation, and harvest events."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Crops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List crop plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/crop-plans",
+            "params": [
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Crop year"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns crop plans for the organization including planned varieties, target yields, and input budgets."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Financials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get farm financial summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/financials/summary",
+            "params": [
+              {
+                "name": "season",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns aggregated financial data including revenue, expenses, and profitability by farm, field, or crop for a specified season."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
