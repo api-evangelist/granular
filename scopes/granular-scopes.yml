@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/granular-farm-management-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/granular-farm-management-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://auth.granular.ag/oauth/authorize
+    tokenUrl: https://auth.granular.ag/oauth/token
+scopes:
+- scope: read
+  description: Read farm data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/granular-farm-management-openapi.yml
+- scope: write
+  description: Write farm data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/granular-farm-management-openapi.yml

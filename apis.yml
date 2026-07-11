@@ -76,3 +76,6 @@ apis:
       enabling agronomic analysis, yield benchmarking, and field performance reporting
       for precision agriculture workflows.
 
+common:
+  - type: OAuthScopes
+    url: scopes/granular-scopes.yml
