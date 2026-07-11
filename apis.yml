@@ -77,5 +77,9 @@ apis:
       for precision agriculture workflows.
 
 common:
+  - type: DomainSecurity
+    url: security/granular-domain-security.yml
+  - type: Authentication
+    url: authentication/granular-authentication.yml
   - type: OAuthScopes
     url: scopes/granular-scopes.yml
