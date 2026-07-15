@@ -77,6 +77,8 @@ apis:
       for precision agriculture workflows.
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/granular-agentic-access.yml
   - type: DomainSecurity
     url: security/granular-domain-security.yml
   - type: Authentication
