@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Granular Farm Management Activities Crops API
+  description: Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.
+  version: 1.0.0
+  contact:
+    name: Granular Support
+    url: https://granular.ag/
+  license:
+    name: Corteva Terms of Service
+    url: https://www.corteva.com/
+servers:
+- url: https://api.granular.ag/v1
+  description: Granular Production API
+security:
+- OAuth2:
+  - read
+  - write
+tags:
+- name: Crops
+  description: Crop plans and variety information
+paths:
+  /crop-plans:
+    get:
+      operationId: listCropPlans
+      summary: List crop plans
+      description: Returns crop plans for the organization including planned varieties, target yields, and input budgets.
+      tags:
+      - Crops
+      parameters:
+      - name: season
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: Crop year
+      - name: farmId
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Crop plans returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CropPlanList'
+components:
+  schemas:
+    CropPlanList:
+      type: object
+      properties:
+        cropPlans:
+          type: array
+          items:
+            $ref: '#/components/schemas/CropPlan'
+    CropPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        farmId:
+          type: string
+        season:
+          type: integer
+        crop:
+          type: string
+        variety:
+          type: string
+        plannedAcres:
+          type: number
+        targetYield:
+          type: number
+        targetYieldUnit:
+          type: string
+          enum:
+          - BU_AC
+          - MT_HA
+          - TON_AC
+        seedingRate:
+          type: number
+        inputBudget:
+          type: number
+          description: Planned input cost per acre (USD)
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.granular.ag/oauth/authorize
+          tokenUrl: https://auth.granular.ag/oauth/token
+          scopes:
+            read: Read farm data
+            write: Write farm data
+externalDocs:
+  description: Granular Documentation
+  url: https://granular.ag/

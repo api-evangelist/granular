@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Granular Farm Management Activities Farms API
+  description: Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.
+  version: 1.0.0
+  contact:
+    name: Granular Support
+    url: https://granular.ag/
+  license:
+    name: Corteva Terms of Service
+    url: https://www.corteva.com/
+servers:
+- url: https://api.granular.ag/v1
+  description: Granular Production API
+security:
+- OAuth2:
+  - read
+  - write
+tags:
+- name: Farms
+  description: Farm entity management
+paths:
+  /farms:
+    get:
+      operationId: listFarms
+      summary: List farms
+      description: Returns all farms accessible to the authenticated user or organization.
+      tags:
+      - Farms
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          default: 20
+          maximum: 100
+      responses:
+        '200':
+          description: Farm list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FarmList'
+  /farms/{farmId}:
+    get:
+      operationId: getFarm
+      summary: Get farm details
+      description: Returns detailed information for a specific farm including contact information, location, and associated fields.
+      tags:
+      - Farms
+      parameters:
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Farm details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '404':
+          description: Farm not found
+components:
+  schemas:
+    FarmList:
+      type: object
+      properties:
+        farms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Farm'
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+    Farm:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        operatorName:
+          type: string
+        address:
+          type: object
+          properties:
+            street:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zipCode:
+              type: string
+            county:
+              type: string
+        totalAcres:
+          type: number
+          description: Total farm acreage
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.granular.ag/oauth/authorize
+          tokenUrl: https://auth.granular.ag/oauth/token
+          scopes:
+            read: Read farm data
+            write: Write farm data
+externalDocs:
+  description: Granular Documentation
+  url: https://granular.ag/

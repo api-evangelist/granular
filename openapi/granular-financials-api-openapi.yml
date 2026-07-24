@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Granular Farm Management Activities Financials API
+  description: Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.
+  version: 1.0.0
+  contact:
+    name: Granular Support
+    url: https://granular.ag/
+  license:
+    name: Corteva Terms of Service
+    url: https://www.corteva.com/
+servers:
+- url: https://api.granular.ag/v1
+  description: Granular Production API
+security:
+- OAuth2:
+  - read
+  - write
+tags:
+- name: Financials
+  description: Farm financial records and cost tracking
+paths:
+  /financials/summary:
+    get:
+      operationId: getFinancialSummary
+      summary: Get farm financial summary
+      description: Returns aggregated financial data including revenue, expenses, and profitability by farm, field, or crop for a specified season.
+      tags:
+      - Financials
+      parameters:
+      - name: season
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: farmId
+        in: query
+        schema:
+          type: string
+      - name: groupBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - FARM
+          - FIELD
+          - CROP
+          default: FARM
+      responses:
+        '200':
+          description: Financial summary returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialSummary'
+components:
+  schemas:
+    FinancialSummary:
+      type: object
+      properties:
+        season:
+          type: integer
+        groupBy:
+          type: string
+        totalRevenue:
+          type: number
+          description: Total revenue in USD
+        totalExpenses:
+          type: number
+          description: Total expenses in USD
+        netIncome:
+          type: number
+        revenuePerAcre:
+          type: number
+        expensePerAcre:
+          type: number
+        breakdown:
+          type: array
+          items:
+            type: object
+            properties:
+              entityId:
+                type: string
+              entityName:
+                type: string
+              revenue:
+                type: number
+              expenses:
+                type: number
+              netIncome:
+                type: number
+              acres:
+                type: number
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.granular.ag/oauth/authorize
+          tokenUrl: https://auth.granular.ag/oauth/token
+          scopes:
+            read: Read farm data
+            write: Write farm data
+externalDocs:
+  description: Granular Documentation
+  url: https://granular.ag/

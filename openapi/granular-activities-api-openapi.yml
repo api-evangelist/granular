@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Granular Farm Management Activities API
+  description: Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.
+  version: 1.0.0
+  contact:
+    name: Granular Support
+    url: https://granular.ag/
+  license:
+    name: Corteva Terms of Service
+    url: https://www.corteva.com/
+servers:
+- url: https://api.granular.ag/v1
+  description: Granular Production API
+security:
+- OAuth2:
+  - read
+  - write
+tags:
+- name: Activities
+  description: Field activities — planting, application, harvest
+paths:
+  /fields/{fieldId}/activities:
+    get:
+      operationId: listFieldActivities
+      summary: List field activities
+      description: Returns all activities logged for a field including planting, fertilizer application, pesticide application, irrigation, and harvest events.
+      tags:
+      - Activities
+      parameters:
+      - name: fieldId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: season
+        in: query
+        schema:
+          type: integer
+        description: Crop year to filter activities
+      - name: activityType
+        in: query
+        schema:
+          type: string
+          enum:
+          - PLANTING
+          - APPLICATION
+          - HARVEST
+          - TILLAGE
+          - IRRIGATION
+          - SCOUTING
+      responses:
+        '200':
+          description: Activities returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityList'
+components:
+  schemas:
+    ActivityList:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'
+        total:
+          type: integer
+    Activity:
+      type: object
+      properties:
+        id:
+          type: string
+        fieldId:
+          type: string
+        activityType:
+          type: string
+          enum:
+          - PLANTING
+          - APPLICATION
+          - HARVEST
+          - TILLAGE
+          - IRRIGATION
+          - SCOUTING
+        date:
+          type: string
+          format: date
+        season:
+          type: integer
+        crop:
+          type: string
+          description: Crop code (e.g., "CORN", "SOYBEANS")
+        notes:
+          type: string
+        details:
+          type: object
+          description: Activity-specific details (varies by activityType)
+          additionalProperties: true
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.granular.ag/oauth/authorize
+          tokenUrl: https://auth.granular.ag/oauth/token
+          scopes:
+            read: Read farm data
+            write: Write farm data
+externalDocs:
+  description: Granular Documentation
+  url: https://granular.ag/
