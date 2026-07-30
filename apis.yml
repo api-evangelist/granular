@@ -5,6 +5,19 @@ description: >-
   APIs for crop planning, field records management, financial analysis, and farm
   operational tracking. The platform serves commercial agriculture operations with
   data-driven decision support tools.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
 tags:
   - Agriculture
@@ -34,48 +47,83 @@ maintainer:
   email: kin@apievangelist.com
 modified: '2026-04-28'
 apis:
-  - aid: granular:granular-farm-management-api
-    name: Granular Farm Management API
-    tags:
-      - Agriculture
-      - AgriForce
-      - Corteva
-      - Crop Planning
-      - Farm Management
-      - Financial
-    image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
-    humanURL: https://granular.ag/
-    baseURL: https://api.granular.ag
-    properties:
-      - url: https://granular.ag/
-        type: Documentation
-      - url: openapi/granular-farm-management-openapi.yml
-        type: OpenAPI
-    description: >-
-      Granular (now part of Corteva Agriscience) provides farm management software
-      APIs for crop planning, field records, financial analysis, and operational tracking.
-      APIs enable access to field-level production data, input cost tracking, and
-      agronomic decision support for agriculture enterprises.
-
-  - aid: granular:granular-insights-api
-    name: Granular Insights API
-    tags:
-      - Agriculture
-      - Agronomy
-      - Analytics
-      - Corteva
-      - Farm Management
-    image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
-    humanURL: https://us.app.granular.ag/
-    baseURL: https://api.granular.ag
-    properties:
-      - url: https://us.app.granular.ag/
-        type: Documentation
-    description: >-
-      Granular Insights provides analytics and reporting APIs for farm operations,
-      enabling agronomic analysis, yield benchmarking, and field performance reporting
-      for precision agriculture workflows.
-
+- aid: granular:granular-insights-api
+  name: Granular Insights API
+  tags:
+  - Agriculture
+  - Agronomy
+  - Analytics
+  - Corteva
+  - Farm Management
+  image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
+  humanURL: https://us.app.granular.ag/
+  baseURL: https://api.granular.ag
+  properties:
+  - url: https://us.app.granular.ag/
+    type: Documentation
+  description: >-
+    Granular Insights provides analytics and reporting APIs for farm operations, enabling agronomic analysis,
+    yield benchmarking, and field performance reporting for precision agriculture workflows.
+- aid: granular:granular-activities-api
+  name: Granular (Corteva Agriscience) Activities API
+  description: Field activities — planting, application, harvest
+  humanURL: https://granular.ag/
+  baseURL: https://api.granular.ag
+  tags:
+  - Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/granular-activities-api-openapi.yml
+  - type: Documentation
+    url: https://granular.ag/
+- aid: granular:granular-crops-api
+  name: Granular (Corteva Agriscience) Crops API
+  description: Crop plans and variety information
+  humanURL: https://granular.ag/
+  baseURL: https://api.granular.ag
+  tags:
+  - Crops
+  properties:
+  - type: OpenAPI
+    url: openapi/granular-crops-api-openapi.yml
+  - type: Documentation
+    url: https://granular.ag/
+- aid: granular:granular-farms-api
+  name: Granular (Corteva Agriscience) Farms API
+  description: Farm entity management
+  humanURL: https://granular.ag/
+  baseURL: https://api.granular.ag
+  tags:
+  - Farms
+  properties:
+  - type: OpenAPI
+    url: openapi/granular-farms-api-openapi.yml
+  - type: Documentation
+    url: https://granular.ag/
+- aid: granular:granular-fields-api
+  name: Granular (Corteva Agriscience) Fields API
+  description: Field boundary and attribute management
+  humanURL: https://granular.ag/
+  baseURL: https://api.granular.ag
+  tags:
+  - Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/granular-fields-api-openapi.yml
+  - type: Documentation
+    url: https://granular.ag/
+- aid: granular:granular-financials-api
+  name: Granular (Corteva Agriscience) Financials API
+  description: Farm financial records and cost tracking
+  humanURL: https://granular.ag/
+  baseURL: https://api.granular.ag
+  tags:
+  - Financials
+  properties:
+  - type: OpenAPI
+    url: openapi/granular-financials-api-openapi.yml
+  - type: Documentation
+    url: https://granular.ag/
 common:
   - type: AgenticAccess
     url: agentic-access/granular-agentic-access.yml
