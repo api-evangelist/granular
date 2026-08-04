@@ -1,0 +1,22 @@
+{
+  "provider": "granular",
+  "sources": [
+    "granular-activities-api-openapi.yml",
+    "granular-crops-api-openapi.yml",
+    "granular-farms-api-openapi.yml",
+    "granular-fields-api-openapi.yml",
+    "granular-financials-api-openapi.yml"
+  ],
+  "outputs": [
+    "granular-activities-api-openapi.yml",
+    "granular-crops-api-openapi.yml",
+    "granular-farms-api-openapi.yml",
+    "granular-fields-api-openapi.yml",
+    "granular-financials-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
