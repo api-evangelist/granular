@@ -1,0 +1,307 @@
+{
+  "item": [
+    {
+      "id": "cd019a49-1a43-416b-8b88-00b61c3c935a",
+      "name": "Fields",
+      "description": {
+        "content": "Field boundary and attribute management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db10ffd1-249b-4d93-97a1-533657a6b880",
+          "name": "List fields for a farm",
+          "request": {
+            "name": "List fields for a farm",
+            "description": {
+              "content": "Returns all fields associated with a farm including GeoJSON boundaries, soil data, and acreage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "farms",
+                ":farmId",
+                "fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "Crop year/season to filter fields (e.g., 2024)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6acc9f46-7305-4336-bbf6-7e7db857a20e",
+              "name": "Field list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms",
+                    ":farmId",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fields\": [\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"name\": \"string\",\n      \"acres\": 8886.67472903033,\n      \"boundary\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"type\": \"Polygon\"\n        }\n      },\n      \"fsaFarmNumber\": \"string\",\n      \"fsaTractNumber\": \"string\",\n      \"fsaFieldNumber\": \"string\",\n      \"soilType\": \"string\",\n      \"predominantSoil\": \"string\",\n      \"irrigated\": true,\n      \"createdAt\": \"1989-10-17T05:49:16.686Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"name\": \"string\",\n      \"acres\": 1981.1962534917693,\n      \"boundary\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"type\": \"MultiPolygon\"\n        }\n      },\n      \"fsaFarmNumber\": \"string\",\n      \"fsaTractNumber\": \"string\",\n      \"fsaFieldNumber\": \"string\",\n      \"soilType\": \"string\",\n      \"predominantSoil\": \"string\",\n      \"irrigated\": false,\n      \"createdAt\": \"1972-02-10T02:54:34.439Z\"\n    }\n  ],\n  \"total\": 1254\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63f62cce-1ba9-47ea-a306-4aaab5cc6b35",
+          "name": "Get field details",
+          "request": {
+            "name": "Get field details",
+            "description": {
+              "content": "Returns detailed information for a specific field including boundary geometry, soil type, FSA farm/tract/field numbers, and historical yield data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fields",
+                ":fieldId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fieldId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91a944af-a272-4b89-8224-b6ab3ba4a01d",
+              "name": "Field details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":fieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"farmId\": \"string\",\n  \"name\": \"string\",\n  \"acres\": 7832.222312828762,\n  \"boundary\": {\n    \"type\": \"Feature\",\n    \"geometry\": {\n      \"type\": \"Polygon\"\n    }\n  },\n  \"fsaFarmNumber\": \"string\",\n  \"fsaTractNumber\": \"string\",\n  \"fsaFieldNumber\": \"string\",\n  \"soilType\": \"string\",\n  \"predominantSoil\": \"string\",\n  \"irrigated\": false,\n  \"createdAt\": \"1954-10-17T04:52:03.435Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "626c78ec-8c44-4621-ac62-595ac228fbbd",
+              "name": "Field not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":fieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.granular.ag/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.granular.ag/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.granular.ag/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fb6fc8e9-547d-498b-b875-82d4e745da35",
+    "name": "Granular Farm Management Activities Fields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.\n\nContact Support:\n Name: Granular Support",
+      "type": "text/plain"
+    }
+  }
+}

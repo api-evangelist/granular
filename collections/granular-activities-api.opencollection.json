@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Granular Farm Management Activities API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.granular.ag/oauth/authorize",
+      "accessTokenUrl": "https://auth.granular.ag/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List field activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/fields/:fieldId/activities",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Crop year to filter activities"
+              },
+              {
+                "name": "activityType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all activities logged for a field including planting, fertilizer application, pesticide application, irrigation, and harvest events."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

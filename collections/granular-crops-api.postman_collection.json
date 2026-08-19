@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "ae1b7422-d243-42ea-ae2f-7f9975495f6f",
+      "name": "Crops",
+      "description": {
+        "content": "Crop plans and variety information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f6af26c-8f1f-4bf9-bda4-051109375b8d",
+          "name": "List crop plans",
+          "request": {
+            "name": "List crop plans",
+            "description": {
+              "content": "Returns crop plans for the organization including planned varieties, target yields, and input budgets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "crop-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "(Required) Crop year"
+                },
+                {
+                  "disabled": false,
+                  "key": "farmId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97b659aa-848c-46d4-948f-c2fb22541698",
+              "name": "Crop plans returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crop-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "farmId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cropPlans\": [\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"season\": 174,\n      \"crop\": \"string\",\n      \"variety\": \"string\",\n      \"plannedAcres\": 308.24075668532845,\n      \"targetYield\": 6381.168399196657,\n      \"targetYieldUnit\": \"BU_AC\",\n      \"seedingRate\": 7414.649649209295,\n      \"inputBudget\": 3669.496706210077\n    },\n    {\n      \"id\": \"string\",\n      \"farmId\": \"string\",\n      \"season\": 7253,\n      \"crop\": \"string\",\n      \"variety\": \"string\",\n      \"plannedAcres\": 1390.3706941880766,\n      \"targetYield\": 9171.556089346755,\n      \"targetYieldUnit\": \"MT_HA\",\n      \"seedingRate\": 1880.246085899453,\n      \"inputBudget\": 7920.640906966756\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.granular.ag/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.granular.ag/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.granular.ag/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c98cf3a1-4f47-42e3-bd55-e994d2005b3e",
+    "name": "Granular Farm Management Activities Crops API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.\n\nContact Support:\n Name: Granular Support",
+      "type": "text/plain"
+    }
+  }
+}

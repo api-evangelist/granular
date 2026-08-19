@@ -1,0 +1,295 @@
+{
+  "item": [
+    {
+      "id": "5822072a-c52a-4e17-80f8-fce7f3936967",
+      "name": "Farms",
+      "description": {
+        "content": "Farm entity management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1d6bdb5-2287-4bac-b037-5925821f50b1",
+          "name": "List farms",
+          "request": {
+            "name": "List farms",
+            "description": {
+              "content": "Returns all farms accessible to the authenticated user or organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "farms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c3fc9f8-2ffc-43fd-ba39-b8243f8795ec",
+              "name": "Farm list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"farms\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"operatorName\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\",\n        \"county\": \"string\"\n      },\n      \"totalAcres\": 9956.409249937344,\n      \"createdAt\": \"1992-07-13T16:08:07.845Z\",\n      \"updatedAt\": \"1955-10-20T06:54:32.018Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"operatorName\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\",\n        \"county\": \"string\"\n      },\n      \"totalAcres\": 6287.325060841803,\n      \"createdAt\": \"1999-11-18T10:06:58.312Z\",\n      \"updatedAt\": \"1989-07-25T06:11:59.869Z\"\n    }\n  ],\n  \"total\": 8705,\n  \"page\": 7345,\n  \"pageSize\": 6446\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50897664-8e4f-4154-a18a-dd48d02e28a8",
+          "name": "Get farm details",
+          "request": {
+            "name": "Get farm details",
+            "description": {
+              "content": "Returns detailed information for a specific farm including contact information, location, and associated fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "farms",
+                ":farmId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3f3fee9-dce0-435b-a299-288d8c2cf897",
+              "name": "Farm details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms",
+                    ":farmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"operatorName\": \"string\",\n  \"address\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"county\": \"string\"\n  },\n  \"totalAcres\": 6012.560831924574,\n  \"createdAt\": \"1999-10-01T22:36:05.803Z\",\n  \"updatedAt\": \"1947-08-01T04:04:25.880Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cfa2500-a920-46ff-805d-37b4764e1b02",
+              "name": "Farm not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "farms",
+                    ":farmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.granular.ag/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.granular.ag/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.granular.ag/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "594d49f0-300e-4b89-b57c-d9c12c28032b",
+    "name": "Granular Farm Management Activities Farms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.\n\nContact Support:\n Name: Granular Support",
+      "type": "text/plain"
+    }
+  }
+}

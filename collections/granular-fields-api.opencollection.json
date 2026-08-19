@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Granular Farm Management Activities Fields API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.granular.ag/oauth/authorize",
+      "accessTokenUrl": "https://auth.granular.ag/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fields for a farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/farms/:farmId/fields",
+            "params": [
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Crop year/season to filter fields (e.g., 2024)"
+              }
+            ]
+          },
+          "docs": "Returns all fields associated with a farm including GeoJSON boundaries, soil data, and acreage."
+        },
+        {
+          "info": {
+            "name": "Get field details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/fields/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific field including boundary geometry, soil type, FSA farm/tract/field numbers, and historical yield data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

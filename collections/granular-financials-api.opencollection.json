@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Granular Farm Management Activities Financials API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.granular.ag/oauth/authorize",
+      "accessTokenUrl": "https://auth.granular.ag/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Financials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get farm financial summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/financials/summary",
+            "params": [
+              {
+                "name": "season",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns aggregated financial data including revenue, expenses, and profitability by farm, field, or crop for a specified season."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "30c7cf50-a24c-4427-8107-8600ab1f53b9",
+      "name": "Financials",
+      "description": {
+        "content": "Farm financial records and cost tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f55ecef5-54d5-4dad-b99a-7851ced9ad70",
+          "name": "Get farm financial summary",
+          "request": {
+            "name": "Get farm financial summary",
+            "description": {
+              "content": "Returns aggregated financial data including revenue, expenses, and profitability by farm, field, or crop for a specified season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "financials",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "farmId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupBy",
+                  "value": "FARM"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "412560c2-3207-431e-9cb5-46bb5ad0f989",
+              "name": "Financial summary returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "financials",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "farmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "FARM"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"season\": 934,\n  \"groupBy\": \"string\",\n  \"totalRevenue\": 8379.617183188166,\n  \"totalExpenses\": 3503.8169106763507,\n  \"netIncome\": 747.605069808922,\n  \"revenuePerAcre\": 1034.2942555439306,\n  \"expensePerAcre\": 9678.09368001242,\n  \"breakdown\": [\n    {\n      \"entityId\": \"string\",\n      \"entityName\": \"string\",\n      \"revenue\": 8718.309434657733,\n      \"expenses\": 9311.33186870001,\n      \"netIncome\": 5828.632928829254,\n      \"acres\": 2363.17008627959\n    },\n    {\n      \"entityId\": \"string\",\n      \"entityName\": \"string\",\n      \"revenue\": 9371.31159604507,\n      \"expenses\": 7623.785689261697,\n      \"netIncome\": 6317.45528997537,\n      \"acres\": 2141.2840884771167\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.granular.ag/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.granular.ag/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.granular.ag/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7fbd249f-ab46-4495-8cfc-33f76dd5e601",
+    "name": "Granular Farm Management Activities Financials API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.\n\nContact Support:\n Name: Granular Support",
+      "type": "text/plain"
+    }
+  }
+}

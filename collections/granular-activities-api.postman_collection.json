@@ -1,0 +1,172 @@
+{
+  "item": [
+    {
+      "id": "1f6bfb83-d51b-465a-9d39-3f1fc82bba50",
+      "name": "Activities",
+      "description": {
+        "content": "Field activities — planting, application, harvest",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2526909a-9164-4d3b-80b6-d7c532b8bc74",
+          "name": "List field activities",
+          "request": {
+            "name": "List field activities",
+            "description": {
+              "content": "Returns all activities logged for a field including planting, fertilizer application, pesticide application, irrigation, and harvest events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fields",
+                ":fieldId",
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "Crop year to filter activities"
+                },
+                {
+                  "disabled": false,
+                  "key": "activityType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fieldId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5cca676-59ce-4c17-aa7b-db1223e460a2",
+              "name": "Activities returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":fieldId",
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activities\": [\n    {\n      \"id\": \"string\",\n      \"fieldId\": \"string\",\n      \"activityType\": \"SCOUTING\",\n      \"date\": \"1976-10-10\",\n      \"season\": 4263,\n      \"crop\": \"string\",\n      \"notes\": \"string\",\n      \"details\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"fieldId\": \"string\",\n      \"activityType\": \"IRRIGATION\",\n      \"date\": \"1971-12-16\",\n      \"season\": 2506,\n      \"crop\": \"string\",\n      \"notes\": \"string\",\n      \"details\": {\n        \"key_0\": true\n      }\n    }\n  ],\n  \"total\": 6443\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.granular.ag/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.granular.ag/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.granular.ag/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1d41b7d8-6c65-49c5-b21a-001c4b29c44f",
+    "name": "Granular Farm Management Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.\n\nContact Support:\n Name: Granular Support",
+      "type": "text/plain"
+    }
+  }
+}

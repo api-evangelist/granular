@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Granular Farm Management Activities Farms API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.granular.ag/oauth/authorize",
+      "accessTokenUrl": "https://auth.granular.ag/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Farms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List farms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/farms",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all farms accessible to the authenticated user or organization."
+        },
+        {
+          "info": {
+            "name": "Get farm details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.granular.ag/v1/farms/:farmId",
+            "params": [
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific farm including contact information, location, and associated fields."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
