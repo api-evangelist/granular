@@ -137,6 +137,9 @@ apis:
   - type: Documentation
     url: https://granular.ag/
 common:
+  - type: CapabilityMap
+    url: capabilities/granular-capability-edges.yml
+    name: Granular (Corteva Agriscience) Business Capability Map
   - type: AgenticAccess
     url: agentic-access/granular-agentic-access.yml
   - type: DomainSecurity
