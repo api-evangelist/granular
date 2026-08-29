@@ -5,6 +5,17 @@ description: >-
   APIs for crop planning, field records management, financial analysis, and farm
   operational tracking. The platform serves commercial agriculture operations with
   data-driven decision support tools.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 accessModel:
   pricing: freemium
