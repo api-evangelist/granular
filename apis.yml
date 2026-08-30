@@ -30,7 +30,6 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
 tags:
   - Agriculture
   - Farm Management
@@ -67,7 +66,6 @@ apis:
   - Analytics
   - Corteva
   - Farm Management
-  image: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/image.png
   humanURL: https://us.app.granular.ag/
   baseURL: https://api.granular.ag
   properties:
