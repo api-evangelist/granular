@@ -146,3 +146,5 @@ common:
     url: authentication/granular-authentication.yml
   - type: OAuthScopes
     url: scopes/granular-scopes.yml
+x-parent: corteva
+x-relationship: acquisition

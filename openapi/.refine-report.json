@@ -17,6 +17,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "granular-activities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "granular-crops-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "granular-farms-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "granular-fields-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "granular-financials-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
