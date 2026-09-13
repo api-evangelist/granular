@@ -1,0 +1,73 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  npm registry search, PyPI, GitHub org lookups (github.com/granular 404, github.com/corteva 200),
+  and the live Granular Insights web application at https://us.app.granular.ag/
+note: >-
+  No first-party client library for any Granular API exists in any public registry. Searched
+  registry.npmjs.org (text search "granular.ag" — zero results), PyPI (no granular.ag client),
+  and GitHub: there is no `granular` GitHub organization (api.github.com/orgs/granular -> 404).
+  Granular publishes no developer portal and no SDK page, so there is nothing to DERIVE from
+  either. package_count: 0 is a measured absence, not an unchecked field — and because there is
+  no official client library, NO `SDKs` pointer is emitted for this provider.
+package_count: 0
+packages: []
+x-parent-org-open-source:
+  note: >-
+    The parent company DOES run a public GitHub organization (github.com/corteva) with real,
+    actively-released open-source Python packages. NONE of them is a client for a Granular API —
+    they are geospatial/raster and Azure-auth libraries — so they are recorded here as context
+    only and are deliberately NOT counted in package_count and NOT wired as SDKs. The Corteva
+    GitHub organization pointer belongs to all/corteva/, which already carries it.
+  org: https://github.com/corteva
+  packages:
+    - language: python
+      registry: pypi
+      name: rioxarray
+      url: https://pypi.org/project/rioxarray/
+      version: 0.23.0
+      published: '2026-07-27'
+      official: true
+      api_client: false
+      description: Geospatial xarray extension powered by rasterio
+    - language: python
+      registry: pypi
+      name: djangorestframework-mvt
+      url: https://pypi.org/project/djangorestframework-mvt/
+      version: 0.3.1
+      published: '2026-08-31'
+      official: true
+      api_client: false
+      description: Django REST Framework extension serving Mapbox Vector Tiles from Postgres
+    - language: python
+      registry: pypi
+      name: msal-requests-auth
+      url: https://pypi.org/project/msal-requests-auth/
+      version: 0.9.3
+      published: '2026-07-15'
+      official: true
+      api_client: false
+      description: Authentication for python-requests using MSAL (Azure AD)
+    - language: python
+      registry: pypi
+      name: geocube
+      url: https://pypi.org/project/geocube/
+      version: 0.7.1
+      published: '2025-02-03'
+      official: true
+      api_client: false
+      description: Convert geopandas vector data into rasterized xarray
+    - language: python
+      registry: pypi
+      name: gars-field
+      url: https://pypi.org/project/gars-field/
+      version: 0.3.3
+      published: '2023-02-09'
+      official: true
+      api_client: false
+      description: Toolkit to generate Global Area Reference System grids
+registries_checked:
+  - {registry: npm, query: 'granular.ag', result: no first-party package}
+  - {registry: pypi, query: granular, result: name taken by an unrelated project; no Granular/Corteva farm API client}
+  - {registry: github, query: 'orgs/granular', result: '404 — no such organization'}
+  - {registry: github, query: 'orgs/corteva', result: '200 — parent org, geospatial OSS only'}

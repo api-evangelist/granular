@@ -1,0 +1,48 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://granular.ag/ (301 -> https://us.insights.granular.ag/), https://us.app.granular.ag/,
+  https://support.insights.granular.ag/hc/en-us, https://www.corteva.com/sitemap.xml, plus DNS
+  probes of status.granular.ag / status.insights.granular.ag / status.corteva.com
+note: >-
+  Granular publishes no public API lifecycle surface. There is no developer portal, no versioning
+  policy page, no deprecation or Sunset-header policy, no SLA, and no status page. Probed for a
+  status page on three conventional hosts — status.granular.ag, status.insights.granular.ag and
+  status.corteva.com all return NXDOMAIN; granular.statuspage.io returns 200 but the body is
+  Atlassian's own Statuspage marketing page (title "Real-Time Incident Communication with
+  Statuspage | Atlassian"), i.e. a soft-200 for an unclaimed subdomain, NOT a Granular status page.
+  No StatusPage and no Deprecation pointer is emitted, because neither surface exists.
+versioning:
+  scheme: unknown
+  current: null
+  docs: null
+  note: >-
+    The only version string observable from outside is the design-system build pinned in the web
+    app (static.granular.ag/gds/2.55.0/), which versions the front end, not an API contract.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_probes:
+  - {url: 'https://status.granular.ag/', status: 0, result: NXDOMAIN}
+  - {url: 'https://status.insights.granular.ag/', status: 0, result: NXDOMAIN}
+  - {url: 'https://status.corteva.com/', status: 0, result: NXDOMAIN}
+  - {url: 'https://granular.statuspage.io/', status: 200, result: 'soft-200 — Atlassian Statuspage marketing page, not a Granular status page'}
+deprecated_operations: []
+x-host-liveness:
+  note: >-
+    The API host this record has always carried is gone, and that is the single most important
+    lifecycle fact about this provider. api.granular.ag has no DNS A or CNAME record (NXDOMAIN,
+    8.8.8.8, 2026-09-12) yet it is the baseURL of all five apis[] entries and the servers[] host
+    of every spec under openapi/. The live Granular Insights product runs at
+    us.insights.granular.ag behind a Kong gateway whose /api routes answer
+    '{"message":"no Route matched with those values"}' to an unauthenticated caller.
+  checked: '2026-09-12'
+  hosts:
+    - {host: api.granular.ag, resolves: false, status: 0}
+    - {host: granular.ag, resolves: true, status: 301, redirects_to: 'https://us.insights.granular.ag/'}
+    - {host: us.insights.granular.ag, resolves: true, status: 200}
+    - {host: us.app.granular.ag, resolves: true, status: 200}

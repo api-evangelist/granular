@@ -1,5 +1,6 @@
 aid: granular
 name: Granular (Corteva Agriscience)
+url: https://raw.githubusercontent.com/api-evangelist/granular/refs/heads/main/apis.yml
 description: >-
   Granular is a farm management platform now part of Corteva Agriscience, providing
   APIs for crop planning, field records management, financial analysis, and farm
@@ -56,7 +57,12 @@ properties:
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
-modified: '2026-04-28'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+created: '2026-04-28'
+modified: '2026-09-12'
 apis:
 - aid: granular:granular-insights-api
   name: Granular Insights API
@@ -146,5 +152,45 @@ common:
     url: authentication/granular-authentication.yml
   - type: OAuthScopes
     url: scopes/granular-scopes.yml
+  - type: Lifecycle
+    url: lifecycle/granular-lifecycle.yml
+  - type: Conformance
+    url: conformance/granular-conformance.yml
+  - type: Packages
+    url: packages/granular-packages.yml
+  - type: Plans
+    url: plans/granular-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/granular-rate-limits.yml
+  - type: Support
+    url: https://support.insights.granular.ag/hc/en-us
+  - type: Website
+    url: https://granular.ag/
+  - type: Portal
+    url: https://us.app.granular.ag/
 x-parent: corteva
 x-relationship: acquisition
+x-enrichment:
+  date: '2026-09-12'
+  status: minimal
+  artifacts_added: 4
+  pass: local-v3
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    Granular Insights runs a real Kong API gateway at us.insights.granular.ag whose /api routes
+    answer '{"message":"no Route matched with those values"}' to an unauthenticated caller, but
+    there is no developer portal, no API reference and no spec anywhere public — every Granular
+    surface redirects into a tenant sign-in, and the api.granular.ag host this record has always
+    carried has no DNS record at all.
+  evidence:
+    - url: https://us.insights.granular.ag/api
+      status: 404
+    - url: https://granular.ag/
+      status: 301
+    - url: https://api.granular.ag/
+      status: 0
+    - url: https://us.app.granular.ag/.well-known/agent-card.json
+      status: 403
+  checked: '2026-09-12'

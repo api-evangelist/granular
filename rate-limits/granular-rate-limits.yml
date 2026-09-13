@@ -4,87 +4,32 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: granular
 providerId: granular
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-12'
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://granular.ag/, https://us.insights.granular.ag/, https://us.app.granular.ag/,
+  https://support.insights.granular.ag/hc/en-us — probed 2026-09-12
 tags:
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the granular API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Granular Farm Management API
-      - Granular Insights API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Granular Farm Management API
-      - Granular Insights API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Granular Farm Management API
-      - Granular Insights API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Granular Farm Management API
-      - Granular Insights API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Granular Farm Management API
-      - Granular Insights API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+description: >-
+  Granular publishes NO rate limits and NO rate-limit response headers for any API. This file
+  replaces a 2026-05-04 bulk-sweep scaffold that asserted five invented tiers (10/100/1000 rpm
+  with X-RateLimit-* headers) that no Granular document has ever stated. There is no developer
+  portal, no API reference, and no throttling documentation on any Granular or Corteva surface.
+  No unauthenticated response could be observed either: the one live API front door,
+  us.insights.granular.ag/api behind a Kong gateway, returns a bare
+  '{"message":"no Route matched with those values"}' 404 with no RateLimit-*, X-RateLimit-* or
+  Retry-After header. limit_count: 0 is a measured absence, not an unchecked field.
+limit_count: 0
+limits: []
+headers: {}
+responseCodes: {}
+policies: []
+evidence:
+  - {url: 'https://us.insights.granular.ag/api', status: 404, note: 'Kong "no Route matched with those values"; response carries no rate-limit headers'}
+  - {url: 'https://us.insights.granular.ag/', status: 200, note: 'sign-in SPA shell; no documentation'}
+  - {url: 'https://support.insights.granular.ag/hc/en-us', status: 403, note: 'Zendesk help center behind a Cloudflare bot challenge — page exists, not machine-readable'}
 maintainers: []

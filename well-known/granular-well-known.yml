@@ -1,0 +1,181 @@
+generated: '2026-09-12'
+method: probed
+source: live HTTPS probes of every host this record knows
+note: >-
+  Every named /.well-known path (plus /apis.json, /apis.yml and /llms.txt) was probed on all
+  seven hosts this record knows. hit_count is 0 — nothing real was served on any host, so NO
+  WellKnown and NO SecurityTxt pointer is emitted. Two hosts answer 200 for paths that do not
+  exist: granular.ag / us.insights.granular.ag return a 6,374-byte Granular Insights SPA shell,
+  and us.app.granular.ag (an S3/CloudFront origin) alternates 200-SPA-shell and 403 AccessDenied.
+  Those 200s are recorded as misses. api.granular.ag — the baseURL every api entry in this record
+  carries, and the servers[] host of every OpenAPI in openapi/ — has NO DNS A or CNAME record at
+  all (NXDOMAIN, confirmed against 8.8.8.8 on 2026-09-12), so all sixteen of its rows are status 0.
+hit_count: 0
+hosts:
+  - host: https://granular.ag
+    note: 301-redirects every path to https://us.insights.granular.ag/ (no -L followed on these rows)
+    soft_404_control:
+      path: /.well-known/granular-negative-control-7f3ab91c.json
+      status: 301
+      result: redirect-catch-all
+    documents:
+      - {path: /.well-known/security.txt, status: 301}
+      - {path: /.well-known/openid-configuration, status: 301}
+      - {path: /.well-known/oauth-authorization-server, status: 301}
+      - {path: /.well-known/oauth-protected-resource, status: 301}
+      - {path: /.well-known/api-catalog, status: 301}
+      - {path: /.well-known/ai-plugin.json, status: 301}
+      - {path: /.well-known/ucp.json, status: 301}
+      - {path: /.well-known/acp.json, status: 301}
+      - {path: /.well-known/aauth-resource.json, status: 301}
+      - {path: /.well-known/agent-card.json, status: 301}
+      - {path: /.well-known/agent.json, status: 301}
+      - {path: /.well-known/apis.json, status: 301}
+      - {path: /apis.json, status: 301}
+      - {path: /apis.yml, status: 301}
+      - {path: /llms.txt, status: 301}
+  - host: https://www.granular.ag
+    note: same 301 behaviour as the apex
+    soft_404_control:
+      path: /.well-known/granular-negative-control-7f3ab91c.json
+      status: 301
+      result: redirect-catch-all
+    documents:
+      - {path: /.well-known/security.txt, status: 301}
+      - {path: /.well-known/openid-configuration, status: 301}
+      - {path: /.well-known/oauth-authorization-server, status: 301}
+      - {path: /.well-known/oauth-protected-resource, status: 301}
+      - {path: /.well-known/api-catalog, status: 301}
+      - {path: /.well-known/ai-plugin.json, status: 301}
+      - {path: /.well-known/ucp.json, status: 301}
+      - {path: /.well-known/acp.json, status: 301}
+      - {path: /.well-known/aauth-resource.json, status: 301}
+      - {path: /.well-known/agent-card.json, status: 301}
+      - {path: /.well-known/agent.json, status: 301}
+      - {path: /.well-known/apis.json, status: 301}
+      - {path: /apis.json, status: 301}
+      - {path: /apis.yml, status: 301}
+      - {path: /llms.txt, status: 301}
+  - host: https://us.app.granular.ag
+    note: >-
+      S3/CloudFront origin. Answers 200 with the 6,374-byte Granular Insights SPA shell for some
+      unknown paths and 403 AccessDenied for others — no path returned a document. Every 200 here
+      is a shell, not a document, so file: is never populated.
+    soft_404_control:
+      path: /.well-known/granular-negative-control-7f3ab91c.json
+      status: 403
+      bytes: 263
+      result: origin-access-denied
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/openid-configuration, status: 200, note: 6374-byte SPA shell, not a document}
+      - {path: /.well-known/oauth-authorization-server, status: 200, note: 6374-byte SPA shell, not a document}
+      - {path: /.well-known/oauth-protected-resource, status: 200, note: 6374-byte SPA shell, not a document}
+      - {path: /.well-known/api-catalog, status: 200, note: 6374-byte SPA shell, not a document}
+      - {path: /.well-known/ai-plugin.json, status: 403}
+      - {path: /.well-known/ucp.json, status: 403}
+      - {path: /.well-known/acp.json, status: 403}
+      - {path: /.well-known/aauth-resource.json, status: 403}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+      - {path: /.well-known/apis.json, status: 403}
+      - {path: /apis.json, status: 403}
+      - {path: /apis.yml, status: 403}
+      - {path: /llms.txt, status: 403}
+  - host: https://us.insights.granular.ag
+    note: >-
+      The live Granular Insights front door (granular.ag redirects here). CloudFront in front of a
+      Kong gateway — /api, /api/v1 and /api-docs return Kong's canonical
+      '{"message":"no Route matched with those values"}' 404 with a request_id, while every other
+      path 307s into the SPA. Real API routes exist behind /api but none is publicly documented or
+      reachable unauthenticated.
+    soft_404_control:
+      path: /.well-known/granular-negative-control-7f3ab91c.json
+      status: 404
+      result: honest-404
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/ucp.json, status: 404}
+      - {path: /.well-known/acp.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404, note: 'Kong: no Route matched with those values'}
+      - {path: /apis.yml, status: 404, note: 'Kong: no Route matched with those values'}
+      - {path: /llms.txt, status: 307}
+  - host: https://api.granular.ag
+    note: >-
+      NO DNS RECORD. dig A and dig CNAME against 8.8.8.8 both return empty (NXDOMAIN) on
+      2026-09-12. This is the baseURL of all five api entries in apis.yml and the servers[] host
+      of every spec in openapi/. status 0 means the request never left the resolver.
+    dns: {a: [], cname: [], resolved: false, resolver: 8.8.8.8, checked: '2026-09-12'}
+    documents:
+      - {path: /.well-known/security.txt, status: 0}
+      - {path: /.well-known/openid-configuration, status: 0}
+      - {path: /.well-known/oauth-authorization-server, status: 0}
+      - {path: /.well-known/oauth-protected-resource, status: 0}
+      - {path: /.well-known/api-catalog, status: 0}
+      - {path: /.well-known/ai-plugin.json, status: 0}
+      - {path: /.well-known/ucp.json, status: 0}
+      - {path: /.well-known/acp.json, status: 0}
+      - {path: /.well-known/aauth-resource.json, status: 0}
+      - {path: /.well-known/agent-card.json, status: 0}
+      - {path: /.well-known/agent.json, status: 0}
+      - {path: /.well-known/apis.json, status: 0}
+      - {path: /apis.json, status: 0}
+      - {path: /apis.yml, status: 0}
+      - {path: /llms.txt, status: 0}
+  - host: https://support.insights.granular.ag
+    note: >-
+      Zendesk help center behind Cloudflare. The help center itself answers 403 to a scripted
+      fetch (bot challenge, not a dead page); unknown paths return a 13,333-byte Zendesk 404.
+    soft_404_control:
+      path: /.well-known/granular-negative-control-7f3ab91c.json
+      status: 404
+      result: honest-404
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/ucp.json, status: 404}
+      - {path: /.well-known/acp.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /apis.yml, status: 404}
+      - {path: /llms.txt, status: 404}
+  - host: https://www.corteva.com
+    note: >-
+      Parent company (x-parent: corteva). Probed because apis.yml carries a corteva.com Website
+      pointer. AEM origin; unknown paths return a 142,714-byte branded 404 page.
+    soft_404_control:
+      path: /.well-known/granular-negative-control-7f3ab91c.json
+      status: 404
+      result: honest-404
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 301}
+      - {path: /.well-known/oauth-authorization-server, status: 301}
+      - {path: /.well-known/oauth-protected-resource, status: 301}
+      - {path: /.well-known/api-catalog, status: 301}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/ucp.json, status: 404}
+      - {path: /.well-known/acp.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /apis.yml, status: 301}
+      - {path: /llms.txt, status: 404}

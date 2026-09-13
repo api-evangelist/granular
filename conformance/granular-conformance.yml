@@ -1,0 +1,51 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://us.app.granular.ag/ and its published JavaScript bundles
+  (/assets/index-vastaXIs.js, /chunks/useUser-CuPK4lG9.js), fetched 2026-09-12
+note: >-
+  Granular publishes no API reference, so no standard can be asserted from a contract. The one
+  standards signal observable from the public surface is the identity layer of the Granular
+  Insights web application, which is read here from the app's own published bundle. Nothing is
+  derived from openapi/ — see x-contract-caveat. Agriculture has no mandatory cross-cutting API
+  standard in scoring.yml, and this pipeline is reward-only on domain standards, so an absent
+  ADAPT/AgGateway/ISOBUS conformance is recorded as unknown rather than as a failure.
+standards:
+  - id: oidc
+    conforms: true
+    evidence: >-
+      The Granular Insights web app authenticates against Azure AD B2C — the bundle
+      /chunks/useUser-CuPK4lG9.js references agcompanyb2c.b2clogin.com /
+      AgCompanyB2C.onmicrosoft.com (and CortevaDbpDev / CortevaDbpSandbox tenants) plus
+      login.microsoftonline.com. Azure AD B2C is an OpenID Connect provider.
+    scope: web-application-sign-in
+    caveat: >-
+      This is the product's end-user sign-in, not a documented API authorization surface. The B2C
+      OIDC discovery document could not be retrieved anonymously because it requires the tenant's
+      policy name in the path; both policy-less forms of
+      agcompanyb2c.b2clogin.com/agcompanyb2c.onmicrosoft.com/.well-known/openid-configuration
+      returned 404.
+  - id: oauth2
+    conforms: unknown
+    evidence: >-
+      openapi/_original/ declares an OAuth2 authorizationCode scheme against
+      auth.granular.ag — a host that does not resolve — and no provider documentation
+      corroborates it. Not asserted.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: no published error contract
+  - id: adapt-agdata
+    conforms: unknown
+    evidence: >-
+      ADAPT / AgGateway ADAPT is the agriculture domain standard worth probing for a farm
+      management platform. Granular publishes nothing public that declares it.
+  - id: isobus-iso11783
+    conforms: unknown
+    evidence: no public machine-readable surface to check
+x-contract-caveat: >-
+  Nothing in this file is derived from openapi/. The specs in this repo describe
+  https://api.granular.ag/v1, a host with no DNS record, and no independent evidence of a public
+  Granular API contract was found on any search or probe on 2026-09-12. Deriving conformance,
+  errors, conventions, a data model, an MCP tool list or agent skills from that spec would
+  propagate an unverified contract across a dozen artifacts, which is exactly what STEP 0c of the
+  enrichment contract forbids.
