@@ -134,6 +134,8 @@ apis:
   humanURL: https://granular.ag/
   baseURL: https://api.granular.ag
   tags:
+  - Financial
+  tags_raw:
   - Financials
   properties:
   - type: OpenAPI
