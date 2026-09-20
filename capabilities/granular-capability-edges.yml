@@ -1,0 +1,42 @@
+slug: granular
+provider: Granular (Corteva Agriscience)
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Agriculture & Food Production
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Crops
+  spec_file: granular-crops-api-openapi.yml
+  capability_id: BC-3500.10
+  capability_id_l1: BC-3500
+  capability_name: Cropping System Planning
+  confidence: 0.85
+  evidence: 'GET /crop-plans  listCropPlans  List crop plans; schemas: CropPlan, CropPlanList'
+  reason: Farm management platform exposing crop plans — multi-season/field crop planning maps to Cropping
+    System Planning under Crop Production Management.
+- tag: Fields
+  spec_file: granular-fields-api-openapi.yml
+  capability_id: BC-3540.20
+  capability_id_l1: BC-3540
+  capability_name: Field and Parcel Management
+  confidence: 0.85
+  evidence: 'GET /farms/{farmId}/fields  listFields  List fields for a farm; schemas: FieldList, Field'
+  reason: Field/parcel records for a farm map directly to Field and Parcel Management.
+- tag: Activities
+  spec_file: granular-activities-api-openapi.yml
+  capability_id: BC-3500
+  capability_id_l1: BC-3500
+  capability_name: Crop Production Management
+  confidence: 0.7
+  evidence: GET /fields/{fieldId}/activities  listFieldActivities  List field activities
+  reason: Field-level agronomic activity records within a farm management platform covering "planting
+    records, harvest data, input applications" — on-farm cropping operations. Left at L1 because the generic
+    Activity schema does not name a specific operation type (planting vs nutrition vs protection).
