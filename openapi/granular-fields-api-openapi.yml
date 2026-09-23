@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Granular Farm Management Activities Fields API
+  title: Granular Farm Management Fields API
   description: Granular (Corteva Agriscience) Farm Management API provides access to farm operational data including fields, crops, planting records, harvest data, input applications, and financial analytics. The API enables integration with precision agriculture systems, input suppliers, and agricultural analytics platforms.
   version: 1.0.0
   contact:

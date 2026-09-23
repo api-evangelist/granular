@@ -1,11 +1,7 @@
 {
   "provider": "granular",
   "sources": [
-    "granular-activities-api-openapi.yml",
-    "granular-crops-api-openapi.yml",
-    "granular-farms-api-openapi.yml",
-    "granular-fields-api-openapi.yml",
-    "granular-financials-api-openapi.yml"
+    "_original/granular-farm-management-openapi.yml"
   ],
   "outputs": [
     "granular-activities-api-openapi.yml",
@@ -18,12 +14,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "granular-activities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "granular-crops-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "granular-farms-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "granular-fields-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "granular-financials-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "granular-farm-management-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "granular-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "granular-crops-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "granular-farms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "granular-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "granular-financials-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
