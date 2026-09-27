@@ -47,6 +47,13 @@ paths:
                 $ref: '#/components/schemas/CropPlanList'
 components:
   schemas:
+    CropPlanList:
+      type: object
+      properties:
+        cropPlans:
+          type: array
+          items:
+            $ref: '#/components/schemas/CropPlan'
     CropPlan:
       type: object
       properties:
@@ -75,13 +82,6 @@ components:
         inputBudget:
           type: number
           description: Planned input cost per acre (USD)
-    CropPlanList:
-      type: object
-      properties:
-        cropPlans:
-          type: array
-          items:
-            $ref: '#/components/schemas/CropPlan'
   securitySchemes:
     OAuth2:
       type: oauth2

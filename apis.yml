@@ -34,9 +34,17 @@ accessModel:
 tags:
   - Agriculture
   - Farm Management
+  - Finance
+  - Crop Planning
+  - Agronomy
+  - AgTech
+tags_raw:
+  - Agriculture
+  - Farm Management
   - Financial
   - Crop Planning
   - Agronomy
+  - AgTech
 properties:
   - url: https://granular.ag/
     type: Portal
@@ -134,9 +142,10 @@ apis:
   humanURL: https://granular.ag/
   baseURL: https://api.granular.ag
   tags:
-  - Financial
+  - Finance
   tags_raw:
   - Financials
+  - Financial
   properties:
   - type: OpenAPI
     url: openapi/granular-financials-api-openapi.yml
