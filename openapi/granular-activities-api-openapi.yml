@@ -58,6 +58,15 @@ paths:
                 $ref: '#/components/schemas/ActivityList'
 components:
   schemas:
+    ActivityList:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'
+        total:
+          type: integer
     Activity:
       type: object
       properties:
@@ -88,15 +97,6 @@ components:
           type: object
           description: Activity-specific details (varies by activityType)
           additionalProperties: true
-    ActivityList:
-      type: object
-      properties:
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Activity'
-        total:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2

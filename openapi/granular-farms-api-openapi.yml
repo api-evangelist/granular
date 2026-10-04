@@ -70,6 +70,19 @@ paths:
           description: Farm not found
 components:
   schemas:
+    FarmList:
+      type: object
+      properties:
+        farms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Farm'
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
     Farm:
       type: object
       properties:
@@ -101,19 +114,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    FarmList:
-      type: object
-      properties:
-        farms:
-          type: array
-          items:
-            $ref: '#/components/schemas/Farm'
-        total:
-          type: integer
-        page:
-          type: integer
-        pageSize:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -69,6 +69,15 @@ paths:
           description: Field not found
 components:
   schemas:
+    FieldList:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        total:
+          type: integer
     Field:
       type: object
       properties:
@@ -115,15 +124,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    FieldList:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-        total:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2
