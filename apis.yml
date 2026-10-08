@@ -152,6 +152,8 @@ apis:
   - type: Documentation
     url: https://granular.ag/
 common:
+  - type: FinOps
+    url: finops/granular-finops.yml
   - url: https://us.app.granular.ag/blog/
     type: Blog
   - type: CapabilityMap
