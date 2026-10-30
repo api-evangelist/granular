@@ -1,4 +1,4 @@
-# Granular (Corteva Agriscience) (granular)
+# Granular (Corteva Agriscience)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,60 +66,148 @@
 
 Granular is a farm management platform now part of Corteva Agriscience, providing APIs for crop planning, field records management, financial analysis, and farm operational tracking. The platform serves commercial agriculture operations with data-driven decision support tools.
 
-## Tags
+**Areas:** Agriculture · Farm Management · Finance · Crop Planning · Agronomy · AgTech
 
-- Agriculture
-- Farm Management
-- Financial
-- Crop Planning
-- Agronomy
+## Granular (Corteva Agriscience) on APIs.io
 
-## Timestamps
+Everything profiled for Granular (Corteva Agriscience) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/granular/](https://apis.io/providers/granular/)** — or go straight to one of the APIs or properties below.
 
-- **Modified:** 2026-04-28
+### APIs (6)
 
-## APIs
+- [Granular Insights API](https://apis.io/apis/granular/granular-insights-api/) — Granular Insights provides analytics and reporting APIs for farm operations, enabling agronomic analysis, yield benchmarking, and field performance…
+- [Granular (Corteva Agriscience) Activities API](https://apis.io/apis/granular/granular-activities-api/) — Field activities — planting, application, harvest
+- [Granular (Corteva Agriscience) Crops API](https://apis.io/apis/granular/granular-crops-api/) — Crop plans and variety information
+- [Granular (Corteva Agriscience) Farms API](https://apis.io/apis/granular/granular-farms-api/) — Farm entity management
+- [Granular (Corteva Agriscience) Fields API](https://apis.io/apis/granular/granular-fields-api/) — Field boundary and attribute management
+- [Granular (Corteva Agriscience) Financials API](https://apis.io/apis/granular/granular-financials-api/) — Farm financial records and cost tracking
 
-### Granular Farm Management API
+### Published properties
 
-Granular (now part of Corteva Agriscience) provides farm management software APIs for crop planning, field records, financial analysis, and operational tracking. APIs enable access to field-level production data, input cost tracking, and agronomic decision support for agriculture enterprises.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Human URL:** [https://granular.ag/](https://granular.ag/)
-- **Base URL:** `https://api.granular.ag`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Agriculture
-- AgriForce
-- Corteva
-- Crop Planning
-- Farm Management
-- Financial
+- [Granular Agentic Access](https://apis.io/agentic-access/granular/granular-agentic-access/)
 
-#### Properties
+#### JSON Schema (1)
 
-- [Documentation](https://granular.ag/)
-- [OpenAPI](openapi/granular-farm-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/granular-farm-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/granular-farm-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-### Granular Insights API
+- [Granular Farm Field](https://apis.io/schemas/granular/granular-field/)
 
-Granular Insights provides analytics and reporting APIs for farm operations, enabling agronomic analysis, yield benchmarking, and field performance reporting for precision agriculture workflows.
+#### JSON-LD (1)
 
-- **Human URL:** [https://us.app.granular.ag/](https://us.app.granular.ag/)
-- **Base URL:** `https://api.granular.ag`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Granular Context](https://apis.io/jsonld/granular/granular-context/)
 
-- Agriculture
-- Agronomy
-- Analytics
-- Corteva
-- Farm Management
+#### Collections (6)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://us.app.granular.ag/)
-- [Postman Collection](collections/granular-farm-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/granular-farm-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Granular Farm Management Activities API](https://apis.io/collections/granular/open-granular-activities-api/)
+- [Granular Farm Management Activities Crops API](https://apis.io/collections/granular/open-granular-crops-api/)
+- [Granular Farm Management API](https://apis.io/collections/granular/open-granular-farm-management/)
+- [Granular Farm Management Activities Farms API](https://apis.io/collections/granular/open-granular-farms-api/)
+- [Granular Farm Management Activities Fields API](https://apis.io/collections/granular/open-granular-fields-api/)
+- [Granular Farm Management Activities Financials API](https://apis.io/collections/granular/open-granular-financials-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Granular (Corteva Agriscience) — jsonschema rules](https://apis.io/rules/granular/granular-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Granular Authentication](https://apis.io/security/granular/granular-authentication/)
+- [Granular Domain Security](https://apis.io/security/granular/granular-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Granular Scopes](https://apis.io/scopes/granular/granular-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Granular Plans Pricing](https://apis.io/plans/granular/granular-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Granular Rate Limits](https://apis.io/rate-limits/granular/granular-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Granular Finops](https://apis.io/finops/granular/granular-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://granular.ag/)
+- [Support](https://support.insights.granular.ag/hc/en-us)
+- [Blog](https://us.app.granular.ag/blog/)
+
+## API Evangelist rating
+
+**Kin Score 30.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 54.4 |
+| Contract governance | 28.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 0.0 |
+
+**Agent readiness 28.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/granular/](https://apis.io/providers/granular/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Granular (Corteva Agriscience): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/granular/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
